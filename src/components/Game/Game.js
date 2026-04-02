@@ -8,30 +8,42 @@ import { WORDS } from '../../data';
 // To make debugging easier, we'll log the solution in the console.
 // console.info({ answer });
 
-function PrintAnswer(answer){
-  console.log({ answer });
-}
-
 function Game() {
-  const [answer, setAnswer] = React.useState("Hello");
+  const [answers, setAnswers] = React.useState([]);
+  const [ans, setAns] = React.useState('');
+
+  function handleAddAnswer(answer) {
+    const newAns = {
+      answer,
+      id: Math.random(),
+    };
+
+    const nextItems = [...answers, newAns];
+    setAnswers(nextItems);
+  }
 
   return (<>
-  Put a game here!
+  <div className='game-results'>
+    {answers.map(({ id, answer }) => (
+            <p key={id}>{answer}</p>
+          ))}
+  </div>
+
   <form 
   className='guess-input-wrapper'
   onSubmit={(event) => {
     event.preventDefault();
-    PrintAnswer(answer);
-    setAnswer('');
+    handleAddAnswer(ans);
+    setAns('');
   }}
   >
     <label htmlFor='guess-input'>Enter guess:</label>
     <input id='guess-input' 
     type='text'
     pattern='[A-Z]{5}'
-    value={answer.toUpperCase()}
+    value={ans.toUpperCase()}
     onChange={event => {
-      setAnswer(event.target.value.toUpperCase())
+      setAns(event.target.value.toUpperCase())
     }}
     />
   </form>
