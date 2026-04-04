@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Form() {
+function Form({ handleAddGuess }) {
   const [answer, setAnswer] = React.useState('');
 
   return (<>
@@ -9,14 +9,14 @@ function Form() {
     onSubmit={
       (event) => {
         event.preventDefault();
-        console.info({ answer });
+        handleAddGuess(answer);
         setAnswer('');
       }
     }
     >
-    <label htmlfor='guess-input'>Enter guess:</label>
+    <label htmlFor='guess-input'>Enter guess:</label>
     <input 
-    id='guess-input" type="text'
+    id='guess-input' type='text'
     pattern='[A-Z]{5}'
     value={answer.toUpperCase()}
     onChange={
