@@ -5,7 +5,7 @@ import { sample } from '../../utils';
 import { WORDS } from '../../data';
 
 // Pick a random word on every pageload.
-//const answer = sample(WORDS);
+const answer = sample(WORDS);
 // To make debugging easier, we'll log the solution in the console.
 //console.info({ answer });
 
@@ -23,7 +23,7 @@ function Game() {
   }
 
   return (<>
-    <Guesses answers={answers}></Guesses>
+    <Guesses ans={answer} answers={answers}></Guesses>
     <Form handleAddGuess={handleAddGuess}></Form>
   </>);
 }
