@@ -8,6 +8,7 @@ function Guess({ ans, answer }) {
   let results = checkGuess(guessText, ans);
   //console.info({answer});
   //console.info(answer.guess);
+  
   return (<>
   <p className='guess' key={answer.id}>
     {
